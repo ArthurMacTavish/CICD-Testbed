@@ -1,0 +1,35 @@
+name: Test kickstart.sh
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  rpm-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container:
+          - fedora:41
+          - fedora:40
+          - amazonlinux:2023
+          - rockylinux:9
+          - centos:7
+    container: ${{ matrix.container }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install basic tools
+        run: |
+          if command -v dnf; then
+            dnf install -y curl sudo
+          elif command -v yum; then
+            yum install -y curl sudo
+          fi
+
+      - name: Run kickstart.sh
+        run: |
+          chmod +x kickstart.sh
+          ./kickstart.sh
