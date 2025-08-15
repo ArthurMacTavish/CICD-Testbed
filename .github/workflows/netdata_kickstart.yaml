@@ -24,9 +24,9 @@ jobs:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf install -y curl sudo
+            dnf install -y curl sudo tar gzip
           elif command -v yum; then
-            yum install -y curl sudo
+            yum install -y curl sudo tar gzip
           fi
 
       - name: Run kickstart.sh
