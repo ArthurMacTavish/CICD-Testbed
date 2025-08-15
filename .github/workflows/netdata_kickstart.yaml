@@ -12,10 +12,10 @@ jobs:
       matrix:
         container:
           - fedora:42
-          - fedora:41
           - fedora:40
           - amazonlinux:latest
-          - rockylinux:latest
+          - rockylinux:9
+          - rockylinux:8
     container: ${{ matrix.container }}
     steps:
       - name: Install basic tools
