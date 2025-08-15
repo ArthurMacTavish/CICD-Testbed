@@ -11,19 +11,19 @@ jobs:
     strategy:
       matrix:
         container:
+          - fedora:42
           - fedora:41
           - fedora:40
-          - amazonlinux:2023
-          - rockylinux:9
-          - centos:7
+          - amazonlinux:latest
+          - rhel:latest
     container: ${{ matrix.container }}
     steps:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf install -y curl sudo tar gzip
+            dnf update -y && dnf install -y curl sudo tar gzip
           elif command -v yum; then
-            yum install -y curl sudo tar gzip
+            yum update -y && yum install -y curl sudo tar gzip
           fi
 
       - name: Checkout repository
