@@ -15,15 +15,15 @@ jobs:
           - fedora:41
           - fedora:40
           - amazonlinux:latest
-          - rhel:latest
+          - rockylinux:latest
     container: ${{ matrix.container }}
     steps:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf update -y && dnf install -y curl sudo tar gzip
+            dnf update -y
           elif command -v yum; then
-            yum update -y && yum install -y curl sudo tar gzip
+            yum update -y
           fi
 
       - name: Checkout repository
