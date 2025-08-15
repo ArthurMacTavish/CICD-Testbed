@@ -18,9 +18,6 @@ jobs:
           - centos:7
     container: ${{ matrix.container }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Install basic tools
         run: |
           if command -v dnf; then
@@ -28,6 +25,9 @@ jobs:
           elif command -v yum; then
             yum install -y curl sudo tar gzip
           fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Run kickstart.sh
         run: |
