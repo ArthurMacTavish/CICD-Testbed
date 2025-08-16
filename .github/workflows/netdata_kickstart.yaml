@@ -14,9 +14,12 @@ jobs:
           - fedora:42
           - fedora:40
           - amazonlinux:latest
+          - amazonlinux:2
           - rockylinux:9
           - rockylinux:8
-          - el:7
+          - ubi7/ubi
+          - ubi8/ubi
+          - ubi9/ubi
     container: ${{ matrix.container }}
     steps:
       - name: Install basic tools
