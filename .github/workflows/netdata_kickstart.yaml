@@ -22,13 +22,15 @@ jobs:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf update -y && dnf install tar gzip -y && dnf info nano
+            dnf update -y && dnf install tar gzip git -y && dnf info nano
           elif command -v yum; then
-            yum update -y && yum install tar gzip -y && yum info nano
+            yum update -y && yum install tar gzip git -y && yum info nano
           fi
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Fetch Repo
+        run: |
+          git clone https://github.com/ArthurMacTavish/CICD-Testbed
+          cd CICD-Testbed
 
       - name: Run kickstart.sh
         run: |
