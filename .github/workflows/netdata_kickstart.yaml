@@ -16,6 +16,7 @@ jobs:
           - amazonlinux:latest
           - rockylinux:9
           - rockylinux:8
+          - el:7
     container: ${{ matrix.container }}
     steps:
       - name: Install basic tools
