@@ -13,7 +13,7 @@ jobs:
         container:
           - fedora:42
           - fedora:40
-          - amazonlinux:2
+          - amazonlinux:latest
           - rockylinux:9
           - rockylinux:8
     container: ${{ matrix.container }}
@@ -21,9 +21,9 @@ jobs:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf update -y && dnf install tar gzip -y
+            dnf update -y && dnf install tar gzip -y && dnf info netdata
           elif command -v yum; then
-            yum update -y && yum install tar gzip -y
+            yum update -y && yum install tar gzip -y && dnf info netdata
           fi
 
       - name: Checkout repository
