@@ -17,17 +17,16 @@ jobs:
           - amazonlinux:2
           - rockylinux:9
           - rockylinux:8
-          - ubi7/ubi
-          - ubi8/ubi
           - ubi9/ubi
+          - ubi10/ubi
     container: ${{ matrix.container }}
     steps:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf update -y && dnf install tar gzip -y && dnf info nano
+            dnf install tar gzip -y && dnf info nano
           elif command -v yum; then
-            yum update -y && yum install tar gzip -y && dnf info nano
+            yum install tar gzip -y && dnf info nano
           fi
 
       - name: Checkout repository
