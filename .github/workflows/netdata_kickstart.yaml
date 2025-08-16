@@ -27,11 +27,8 @@ jobs:
             yum update -y && yum install tar gzip git -y && yum info nano
           fi
 
-      - name: Fetch Repo
+      - name: Fetch Repo & Run Kickstart.sh
         run: |
-          git clone https://github.com/ArthurMacTavish/CICD-Testbed && cd CICD-Testbed
-
-      - name: Run kickstart.sh
-        run: |
+          git clone https://github.com/ArthurMacTavish/CICD-Testbed && ls && cd CICD-Testbed
           chmod +x kickstart.sh
           ./kickstart.sh
