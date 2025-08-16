@@ -26,7 +26,7 @@ jobs:
           if command -v dnf; then
             dnf install tar gzip -y && dnf info nano
           elif command -v yum; then
-            yum install tar gzip -y && dnf info nano
+            yum install tar gzip -y && yum info nano
           fi
 
       - name: Checkout repository
