@@ -1506,7 +1506,6 @@ netdata_avail_check() {
     centos|fedora|ol|amzn)
       # shellcheck disable=SC2086
       LC_ALL=C ${pm_cmd} info --nogpgcheck netdata | grep -qE '^(Repo(sitory)?|From repo) *: *netdata(-edge)?(/.*)?$'
-      fi
       ;;
     opensuse)
       zypper packages -r "$(zypper repos | grep -E 'netdata |netdata-edge ' | cut -f 1 -d '|' | tr -d ' ')" | grep -E 'netdata '
