@@ -24,9 +24,9 @@ jobs:
       - name: Install basic tools
         run: |
           if command -v dnf; then
-            dnf install tar gzip -y && dnf info nano
+            dnf update -y && dnf install tar gzip -y --allowerasing && dnf info nano
           elif command -v yum; then
-            yum install tar gzip -y && yum info nano
+            yum update -y && yum install tar gzip -y --allowerasing && yum info nano
           fi
 
       - name: Checkout repository
